@@ -1,0 +1,40 @@
+/* Neumorphism CSS */
+
+.neuo-bg {
+    background-color: #e0e5ec !important;
+}
+
+.neuo-card {
+    background-color: #e0e5ec;
+    border-radius: 15px;
+    box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 1.25rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.neuo-card:hover {
+    box-shadow: 12px 12px 20px rgba(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.9);
+}
+
+.neuo-inset {
+    background-color: #e0e5ec;
+    border-radius: 15px;
+    box-shadow: inset 5px 5px 10px rgba(163, 177, 198, 0.6), inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 1.25rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.neuo-inset:hover {
+    box-shadow: inset 8px 8px 14px rgba(163, 177, 198, 0.7), inset -8px -8px 14px rgba(255, 255, 255, 0.9);
+}
+
+/* Custom link colors for neumorphism so they contrast well */
+.neuo-link {
+    color: #2c3e50;
+    text-decoration: none;
+}
+.neuo-link:hover {
+    color: #1a252f;
+}

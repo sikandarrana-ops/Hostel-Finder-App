@@ -1,0 +1,63 @@
+[
+  {
+    "Id": 1,
+    "Title": "Luxury Studio in Downtown",
+    "Description": "Beautiful top-floor studio with amazing city views. Fully furnished, modern kitchen, and an easy commute to all university campuses.",
+    "Location": "Downtown Central",
+    "Price": 1200,
+    "UserId": "1",
+    "UserName": "Hassam",
+    "DatePosted": "2026-03-20T23:00:00+05:00",
+    "ImageUrl": null,
+    "ImageUrls": [],
+    "ContactPhone": "+44 7700 900123",
+    "ContactEmail": "hassam@example.com"
+  },
+  {
+    "Id": 2,
+    "Title": "Shared Room near Campus",
+    "Description": "Looking for a quiet roommate to share a large, sunny 2-bedroom flat. 5 minutes walking distance to exactly where you need to go.",
+    "Location": "University District",
+    "Price": 650,
+    "UserId": "2",
+    "UserName": "sarahk",
+    "DatePosted": "2026-03-23T03:30:00+05:00",
+    "ImageUrl": null,
+    "ImageUrls": [],
+    "ContactPhone": "+44 7700 900456",
+    "ContactEmail": "sarah.roommate@example.com"
+  },
+  {
+    "Id": 3,
+    "Title": "Cozy Heated Basement Room",
+    "Description": "Private entrance, super quiet, great for focusing on studies. All utilities included in the monthly rent. Fast Wi-Fi.",
+    "Location": "North Suburbs",
+    "Price": 400,
+    "UserId": "1",
+    "UserName": "Hassam",
+    "DatePosted": "2026-03-18T22:15:00+05:00",
+    "ImageUrl": null,
+    "ImageUrls": [],
+    "ContactPhone": "+44 7700 900123",
+    "ContactEmail": "hassam@example.com"
+  },
+  {
+    "Id": 4,
+    "Title": "Testing",
+    "Description": "Beautiful Place",
+    "Location": "Birmingham",
+    "Price": 15000,
+    "UserId": "3",
+    "UserName": "Martin",
+    "DatePosted": "2026-03-24T12:12:07.0735263+05:00",
+    "ImageUrl": "/uploads/e1152e25-a1a2-434d-9070-ec0c94d18377_peter-parker-action-3840x2160-13145.jpeg",
+    "ImageUrls": [
+      "/uploads/e1152e25-a1a2-434d-9070-ec0c94d18377_peter-parker-action-3840x2160-13145.jpeg",
+      "/uploads/07ca0b70-150c-49c3-af12-0511f579f6ac_Red Dead Redemption.jpg",
+      "/uploads/1dc04df6-27ba-44c3-8d77-d3b441eab15d_spiderman3.jpg",
+      "/uploads/b67b5c27-bdde-4a53-84f7-b4023e24a162_spiderman4.jpg"
+    ],
+    "ContactPhone": "+123",
+    "ContactEmail": "abc@gmail.com"
+  }
+]

@@ -1,0 +1,65 @@
+@model HostelFinderApp.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row mb-5 mt-4">
+    <div class="col-12">
+        <div class="p-5 mb-4 bg-light rounded-3 shadow-sm">
+            <div class="container-fluid py-2">
+                <h1 class="display-5 fw-bold">Find your next place</h1>
+                <p class="col-md-8 fs-4">Search for rooms and hostels in your city.</p>
+                
+                <form method="get" asp-action="Search" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="searchCity" class="form-label">City</label>
+                        <input type="text" class="form-control" id="searchCity" name="searchCity" placeholder="E.g., Downtown">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="minPrice" class="form-label">Min Price</label>
+                        <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="0">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="maxPrice" class="form-label">Max Price</label>
+                        <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="1000">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row neuo-bg p-4 rounded-4 shadow-sm">
+    <div class="col-md-12 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-dark">My Posted Ads</h2>
+            <a asp-controller="Advertisement" asp-action="Create" class="btn btn-success btn-sm rounded-pill px-3 shadow-sm">Post New Ad</a>
+        </div>
+        @if (Model.MyAds.Any())
+        {
+            <div class="d-flex flex-column gap-3" style="max-height: 500px; overflow-y: auto; padding: 1rem;">
+                @foreach (var ad in Model.MyAds)
+                {
+                    <a asp-controller="Advertisement" asp-action="Details" asp-route-id="@ad.Id" class="text-decoration-none">
+                        <div class="neuo-card">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1 text-dark fw-bold text-truncate" style="max-width: 75%;">@ad.Title</h5>
+                                <span class="badge bg-primary rounded-pill h-100 p-2">@ad.Price.ToString("C")</span>
+                            </div>
+                            <p class="mb-2 text-dark text-truncate">@ad.Location</p>
+                            <small class="text-muted">Posted on @ad.DatePosted.ToString("g")</small>
+                        </div>
+                    </a>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">You haven't posted any advertisements yet.</p>
+        }
+    </div>
+</div>

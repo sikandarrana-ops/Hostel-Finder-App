@@ -1,0 +1,95 @@
+@model HostelFinderApp.Models.Advertisement
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="row mt-4 mb-5">
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow-sm rounded-4 overflow-hidden border-0 bg-light">
+            @if (Model.ImageUrls != null && Model.ImageUrls.Any())
+            {
+                <div id="adCarousel_@Model.Id" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                        {
+                            <button type="button" data-bs-target="#adCarousel_@Model.Id" data-bs-slide-to="@i" class="@(i==0 ? "active" : "")"></button>
+                        }
+                    </div>
+                    <div class="carousel-inner">
+                        @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                        {
+                            <div class="carousel-item @(i==0 ? "active" : "")">
+                                <img src="@Model.ImageUrls[i]" class="d-block w-100" style="max-height: 450px; object-fit: cover;" alt="Image @(i+1)">
+                            </div>
+                        }
+                    </div>
+                    @if (Model.ImageUrls.Count > 1)
+                    {
+                        <button class="carousel-control-prev" type="button" data-bs-target="#adCarousel_@Model.Id" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true" style="width: 30px; height: 30px; background-size: 50%;"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#adCarousel_@Model.Id" data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true" style="width: 30px; height: 30px; background-size: 50%;"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    }
+                </div>
+            }
+            else if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Title" style="max-height: 450px; object-fit: cover;">
+            }
+            <div class="card-body p-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="card-title fw-bold mb-0 text-dark">@Model.Title</h2>
+                    <span class="badge bg-primary fs-5 px-3 py-2 rounded-pill shadow-sm">@Model.Price.ToString("C")</span>
+                </div>
+                
+                <h5 class="text-secondary mb-4">📍 @Model.Location</h5>
+                
+                <hr />
+                
+                <h4 class="mt-4 mb-3 text-dark fw-bold">Description</h4>
+                <p class="card-text fs-5 text-dark" style="white-space: pre-wrap;">@Model.Description</p>
+                
+                <hr class="mt-5" />
+                
+                <hr class="mt-5" />
+                
+                <h4 class="mb-3 text-dark fw-bold">Contact Information</h4>
+                <div class="row g-3 mb-4">
+                    @if (!string.IsNullOrEmpty(Model.ContactPhone))
+                    {
+                        <div class="col-md-6">
+                            <div class="p-3 bg-white border rounded shadow-sm text-dark h-100 d-flex align-items-center">
+                                <span class="fs-4 me-3">📞</span> 
+                                <a href="tel:@Model.ContactPhone" class="text-decoration-none text-dark fw-bold fs-5">@Model.ContactPhone</a>
+                            </div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.ContactEmail))
+                    {
+                        <div class="col-md-6">
+                            <div class="p-3 bg-white border rounded shadow-sm text-dark h-100 d-flex align-items-center">
+                                <span class="fs-4 me-3">✉️</span> 
+                                <a href="mailto:@Model.ContactEmail" class="text-decoration-none text-dark fw-bold fs-5 text-break">@Model.ContactEmail</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mt-5">
+                    <div class="text-muted">
+                        <small>Posted by <strong class="text-dark">@Model.UserName</strong> on @Model.DatePosted.ToString("D")</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4 text-center">
+            <a href="javascript:history.back()" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-bold">Back</a>
+        </div>
+    </div>
+</div>

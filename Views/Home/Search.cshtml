@@ -1,0 +1,58 @@
+@model HostelFinderApp.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4 mt-3">
+    <h2>Search Results</h2>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">Back to Dashboard</a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body bg-light">
+        <form method="get" asp-action="Search" class="row g-3">
+            <div class="col-md-4">
+                <label for="searchCity" class="form-label">City</label>
+                <input type="text" class="form-control" id="searchCity" name="searchCity" value="@Model.SearchCity" placeholder="E.g., Downtown">
+            </div>
+            <div class="col-md-3">
+                <label for="minPrice" class="form-label">Min Price</label>
+                <input type="number" class="form-control" id="minPrice" name="minPrice" value="@Model.MinPrice" placeholder="0">
+            </div>
+            <div class="col-md-3">
+                <label for="maxPrice" class="form-label">Max Price</label>
+                <input type="number" class="form-control" id="maxPrice" name="maxPrice" value="@Model.MaxPrice" placeholder="1000">
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">Update Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model.SearchResults.Any())
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var ad in Model.SearchResults)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">@ad.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-truncate">@ad.Location - @ad.Price.ToString("C")</h6>
+                        <p class="card-text text-truncate">@ad.Description</p>
+                    </div>
+                    <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                        <small class="text-muted">By @ad.UserName</small>
+                        <a asp-controller="Advertisement" asp-action="Details" asp-route-id="@ad.Id" class="btn btn-sm btn-outline-primary rounded-pill px-3">View</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">No advertisements found matching your criteria.</div>
+}
